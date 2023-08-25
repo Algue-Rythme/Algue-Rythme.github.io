@@ -1,0 +1,10 @@
+---
+layout: post
+title:  "CRAFT"
+subtitle: "Concept Recursive Activation FacTorization for Explainability"
+authors: "Thomas Fel, Agustin Picard, Louis Bethune, Thibaut Boissin, David Vigouroux, Julien Colin, Rémi Cadène, Thomas Serre"
+conference: "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, 2023"
+date:   2023-06-18
+categories: [articles]
+image: /assets/images/craftminiature.png
+---
