@@ -23,8 +23,6 @@ author: Louis Bethune
 email: louis [dot] bethune [at] univ-toulouse.fr
 description: >- # this means to ignore newlines until "baseurl:"
   Professional page, with latest work and publications.  
-    
-  Powered by Jekyll.  
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: LouisBAlgue
