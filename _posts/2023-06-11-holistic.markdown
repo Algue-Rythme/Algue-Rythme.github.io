@@ -1,0 +1,10 @@
+---
+layout: post
+title:  "A Holistic Approach to Unifying Automatic Concept Extraction and Concept Importance Estimation"
+subtitle: ""
+authors: "Thomas Fel, Victor Boutin, Mazda Moayeri, Rémi Cadène, Louis Béthune, Mathieu Chalvidal, Thomas Serre"
+conference: "preprint"
+date:   2023-06-11
+categories: [articles]
+image: /assets/images/holisticteaser.png
+---

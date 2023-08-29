@@ -259,6 +259,10 @@
   margin-bottom: $spacing-unit;
 }
 
+.dt-published {
+  margin-top: -100px;
+}
+
 .post-title {
   @include relative-font-size(2.625);
   letter-spacing: -1px;
