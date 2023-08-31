@@ -4,6 +4,7 @@ title:  "A Holistic Approach to Unifying Automatic Concept Extraction and Concep
 subtitle: ""
 authors: "Thomas Fel, Victor Boutin, Mazda Moayeri, Rémi Cadène, Louis Béthune, Mathieu Chalvidal, Thomas Serre"
 conference: "preprint"
+paper: https://arxiv.org/abs/2306.07304
 date:   2023-06-11
 categories: [articles]
 image: /assets/images/holisticteaser.png

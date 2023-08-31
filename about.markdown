@@ -8,11 +8,16 @@ Since 2020 I am pursuing a PhD degree student in machine learning and deep learn
   
 My CV can be found [here](/assets/pdf/BETHUNE-CV.pdf).  
   
-### Short bio  
-  
-I obtain by baccalaureate in 2014 in small city of the north of France. I moved to Valenciennes in the preparatory classes for the competitive examination to enter the French engineering school. I was received at Ecole Normale Superieure de Lyon in 2016 as a civil servant. I obtained my master degree in 2019 in the same school, majoring in [fundamental computer science](http://informatique.ens-lyon.fr/en/academic-programs/master/m2), with a specialization in [complex systems](https://www.ixxi.fr/enseignement).  
-   
-I did an internship at Google Brain Paris in 2019 under the supervision of Olivier Pietquin and Matthieu Geist. Later on, I did a research internship in ENS Lyon with Pierre Borgnat and Aurelien Garivier. I was under the supervision of Vincent Gripon at Telecom Bretagne in 2020, amid the COVID-19 pandemic. I was lucky to go back to Google Brain Paris in 2021 for a research internship under the supervision of Mathieu Blondel, where I made a significant contribution to [jaxopt](https://jaxopt.github.io) library.  
+### Biosketch  
+
+- **2020 - present**: PhD student in machine learning and deep learning in [IRIT](https://www.irit.fr) laboratory in Toulouse (France), under the supervision of Mathieu Serrurier.
+- **2021**: Research intern at Google Brain Paris under the supervision of Mathieu Blondel.
+- **2020**: Research intern at [Telecom Bretagne](https://www.imt-atlantique.fr/fr) under the supervision of Vincent Gripon.
+- **2019**: Research intern at [ENS Lyon](https://www.ens-lyon.fr) under the supervision of Pierre Borgnat and Aurelien Garivier.
+- **2019**: Research intern at Google Brain Paris under the supervision of Olivier Pietquin and Matthieu Geist.
+- **2016 - 2019**: Master degree in fundamental computer science at [ENS Lyon](https://www.ens-lyon.fr). Complex systems specialty from the master of [Ixxi](https://www.ixxi.fr/).  
+- **2014 - 2016**: Preparatory classes for the competitive examination to enter the French engineering school at [Lycée Henri Wallon](https://www.lycee-henri-wallon.fr) in Valenciennes (France).
+- **2014**: Baccalaureate in science at [Lycée Jesse de Forest](https://jesse-de-forest-avesnes-sur-helpe.enthdf.fr/) in Avesnes-sur-Helpe (France).
   
 ### About the website  
 
