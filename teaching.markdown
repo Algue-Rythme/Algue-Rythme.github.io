@@ -26,7 +26,7 @@ I have teached a few courses over the years.
 - **2020-2021**, Data Science Master of Science program, *Machine learning*, 29h
 - **2020/2021**, L3 INFO, *Internship supervision*, 8h
 
-In **2021**, I was a teaching assisttant during the [Reinforcement Learning Virtual School](https://rl-vs.github.io/rlvs2021/index.html) (RLVS) organized by [Sébastien Gerchinovitz](https://www.math.univ-toulouse.fr/~sgerchin/).  
+In **2021**, I was a teaching assistant during the [Reinforcement Learning Virtual School](https://rl-vs.github.io/rlvs2021/index.html) (RLVS) organized by [Sébastien Gerchinovitz](https://www.math.univ-toulouse.fr/~sgerchin/).  
   
 During **2017–2019** summers, I was an animator of the summer camp *Girls can code!* in ENS Lyon.  
 
