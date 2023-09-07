@@ -32,4 +32,4 @@ During **2017–2019** summers, I was an animator of the summer camp *Girls can 
 
 ### Students
 
-I got lucky to supervise [Thomas Masséna](https://scholar.google.com/citations?user=n09aacYAAAAJ) during its final year of engineering school. Check out his work [here](https://arxiv.org/abs/2305.16202)!
+I got lucky to supervise [Thomas Masséna](https://scholar.google.com/citations?user=n09aacYAAAAJ) during its final year of engineering school. 
