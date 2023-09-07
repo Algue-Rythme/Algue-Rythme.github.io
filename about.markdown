@@ -1,10 +1,11 @@
 ---
 layout: page
-title: About
+title: About me
+order: 10
 permalink: /about/
 ---
 
-Since 2020 I am pursuing a PhD degree student in machine learning and deep learning in [IRIT](https://www.irit.fr) laboratory in Toulouse (France), under the supervision of Mathieu Serrurier. I am part of the Artificial and Natural Intelligence Toulouse Institude ([ANITI](https://aniti.univ-toulouse.fr)), and part of the [DEEL](https://www.deel.ai/) team as well.  
+Since 2020 I am pursuing a PhD degree student in machine learning and deep learning in [IRIT](https://www.irit.fr) laboratory in Toulouse (France), under the supervision of Mathieu Serrurier. I am part of the Artificial and Natural Intelligence Toulouse Institude ([ANITI](https://aniti.univ-toulouse.fr)) as a member of the ``Fair and robust learning'' chair of [Jean-Michel Loubes](https://perso.math.univ-toulouse.fr/loubes/), and part of the [DEEL](https://www.deel.ai/) team as well.  
   
 My CV can be found [here](/assets/pdf/BETHUNE-CV.pdf).  
   
