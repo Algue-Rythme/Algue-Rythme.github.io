@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Community service
-order: 2
+order: 3
 permalink: /service/
 ---
 

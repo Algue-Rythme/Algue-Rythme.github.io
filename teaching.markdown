@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Teaching & students
-order: 2
+order: 5
 permalink: /teaching/
 ---
 
@@ -32,4 +32,4 @@ During **2017–2019** summers, I was an animator of the summer camp *Girls can 
 
 ### Students
 
-I got lucky to supervise [Thomas Masséna](https://scholar.google.com/citations?user=n09aacYAAAAJ) during its final year of engineering school. 
+I got lucky to supervise [Thomas Masséna](https://scholar.google.com/citations?user=n09aacYAAAAJ) during the internship of its last year of Master "*Signal, image, communication, multimédia*" at Grenoble INP Phelma.  
