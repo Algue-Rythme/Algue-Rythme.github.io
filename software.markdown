@@ -12,11 +12,11 @@ I am proud to be a major contributor of [Jaxopt](https://github.com/google/jaxop
 
 ### Cartomensia
 
-I was the team leader of a team 17 people for the [Cartomensia](https://graal.ens-lyon.fr/cartomensia/) project: a software to play "[La Batarde](http://www.labatarde.com/)", a card game inspired from "Belote" and few other. The project was written in C++ and SFML. It contains:
+In 2017/2018, I was the team leader of a team 17 people for the [Cartomensia](https://graal.ens-lyon.fr/cartomensia/) project: a software to play "[La Batarde](http://www.labatarde.com/)", a card game inspired from "Belote" and few other. The project was written in C++ and SFML. It contains:
 - a game engine,
 - a GUI,
 - a server to play online,
-- a bot to play against based on Monte Caarlo Tree Search.
+- a bot to play against based on Monte Carlo Tree Search.
 
 <p style="text-align:center">
 <img src="/assets/images/logo_cartomensia.png" width="100" height="100">
