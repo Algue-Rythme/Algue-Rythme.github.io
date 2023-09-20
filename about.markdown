@@ -17,7 +17,7 @@ My CV can be found [here](/assets/pdf/BETHUNE-CV.pdf).
   - **2020**: Research intern at [Telecom Bretagne](https://www.imt-atlantique.fr/fr) under the supervision of Vincent Gripon.
   - **2019**: Research intern at [ENS Lyon](https://www.ens-lyon.fr) under the supervision of Pierre Borgnat and Aurelien Garivier.
   - **2019**: Research intern at Google Brain Paris under the supervision of Olivier Pietquin and Matthieu Geist.
-  - **2019**: Research intern at [Universidade Do Algarve](https://www.ualg.pt/) under the supervision of Daniel Graça.
+  - **2018**: Research intern at [Universidade Do Algarve](https://www.ualg.pt/) under the supervision of Daniel Graça.
   - **2017**: Research intern at [LRI](https://www.ens-lyon.fr) under the supervision of Guillaume Charpiat.
 - **2014 - 2016**: Preparatory classes for the competitive examination to enter the French engineering school at [Lycée Henri Wallon](https://www.lycee-henri-wallon.fr) in Valenciennes (France).
 - **2014**: Baccalaureate in science at [Lycée Jesse de Forest](https://jesse-de-forest-avesnes-sur-helpe.enthdf.fr/) in Avesnes-sur-Helpe (France).
