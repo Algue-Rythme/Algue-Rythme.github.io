@@ -3,7 +3,7 @@ layout: post
 title:  "A Holistic Approach to Unifying Automatic Concept Extraction and Concept Importance Estimation"
 subtitle: ""
 authors: "Thomas Fel, Victor Boutin, Mazda Moayeri, Rémi Cadène, Louis Béthune, Mathieu Chalvidal, Thomas Serre"
-conference: "preprint"
+conference: "Neural Information Processing Systems (NeurIPS), 2023"
 paper: https://arxiv.org/abs/2306.07304
 date:   2023-06-11
 categories: [articles]
