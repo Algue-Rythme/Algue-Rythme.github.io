@@ -16,6 +16,7 @@ I have teached a few courses over the years.
 ### Practical sessions
 
 **Université Paul Sabatier:**
+- **2023/2024**, M1 SID, *Advanced Algorithmics*, 10h
 - **2022/2023**, L3 INFO, *Artificial Intelligence*, 18h
 - **2021/2022**, L3 INFO, *Machine learning*, 8h
 - **2020/2021**, MAG1, *Computer science*, 36h
