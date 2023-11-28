@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Software
-order: 2
+order: 3
 permalink: /software/
 ---
 
