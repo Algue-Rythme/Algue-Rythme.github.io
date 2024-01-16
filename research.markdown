@@ -24,4 +24,4 @@ An example of research statement encompassing my recent interests and summarizin
 
 The first draft of my thesis can be found [here](/assets/pdf/thesis_web.pdf).
 
-*The defense is soon to be announced.*
+The defense will take place February 7th, 2024 at 9am in the [IRIT Auditorium](https://www.irit.fr/en/home/).  
