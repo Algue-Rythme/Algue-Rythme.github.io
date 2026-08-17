@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, passthroughImageService } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 
@@ -19,6 +19,9 @@ export default defineConfig({
     format: 'directory',
   },
   image: {
-    // Allow processing of local images in src/
+    // No sharp: all figures are already optimized to .webp, so we serve them
+    // as-is. This avoids the native `sharp` dependency (and its flaky install
+    // on CI) entirely.
+    service: passthroughImageService(),
   },
 });

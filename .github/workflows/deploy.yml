@@ -24,9 +24,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
       - name: Install dependencies
         run: npm install --no-audit --no-fund --no-progress
+      - name: Show npm debug log on failure
+        if: failure()
+        run: |
+          echo "=== npm debug logs ==="
+          for f in ~/.npm/_logs/*-debug-0.log; do echo "--- $f ---"; tail -n 120 "$f"; done
       - name: Build
         run: npm run build
       - name: Upload artifact
