@@ -1,0 +1,119 @@
+# =============================================================================
+# Site content & configuration — edit this file to update the website.
+# Plain text (YAML). Longer prose lives in Markdown under src/content/pages/.
+# After editing, the dev server reloads automatically; the build validates it.
+# =============================================================================
+
+identity:
+  name: Louis Béthune
+  role: "Research Engineer · Apple Machine Learning Research"
+  location: Paris
+  email: louis.bethune.pro@icloud.com
+  emailAlt: louis.bethune.pro@gmail.com
+  links:
+    github: https://github.com/Algue-Rythme
+    scholar: https://scholar.google.com/citations?user=1zvpCDcAAAAJ
+    linkedin: https://www.linkedin.com/in/louis-bethune
+    twitter: https://twitter.com/LouisBAlgue
+
+# Career timeline on the About page. Each entry may add an optional `detail`
+# sentence shown under the position + location.
+timeline:
+  - when: 2024-present
+    what: Research Engineer, Apple Machine Learning Research, Paris
+    detail: >-
+      Large-scale training, scaling laws, and multimodal generative models
+      (text, image, audio), spanning research and the systems that run it.
+  - when: 2020-2024
+    what: PhD, Université Toulouse III / IRIT, Toulouse
+    detail: >-
+      Deep learning under Lipschitz constraints, supervised by Mathieu Serrurier,
+      with applications to robustness, optimal transport, privacy, explainability and computer graphics.
+    links:
+      - label: Thesis
+        href: https://theses.hal.science/tel-04674274
+  - when: 2021
+    what: Research intern, Google Brain, Paris
+    detail: >-
+      I made significant contributions to JAXopt, a library of differentiable optimizers written in Jax.
+      In particular, I ported the OSQP quadratic solver to Jax, and added an Armijo line search and Anderson acceleration.
+  - when: 2020
+    what: Research intern, MILA (remote)
+  - when: 2020
+    what: Research intern, IMT Atlantique, Brest
+    detail: >-
+      I looked for graph structures in the latent space of neural networks, and found some.  
+  - when: 2019
+    what: Research intern, ENS de Lyon
+    detail: >-
+      I played with unsupervised graph representation learning.
+  - when: 2019
+    what: Software-engineering intern, Google Brain, Paris
+    detail: Deep reinforcement learning on Atari with Hyperbolic discounting and IMPALA. It never beat the baseline.  
+  - when: 2018
+    what: Research intern, Universidade do Algarve, Faro
+    detail: >-
+      I worked on characterizing the PSPACE class for the GPAC (General Purpose Analog Computer).
+      I had the correct intuition and proved one inclusion, but missed the other direction. The problem was solved 5 years later.
+  - when: 2017
+    what: Research intern, Inria TAO (LRI), Paris
+    detail: >-
+      I created a small tool to track paramecia under a microscope, using policy gradient on top of a CNN. Alas, supervised learning worked better.
+  - when: 2016-2019
+    what: ENS de Lyon, fundamental computer science
+    detail: >-
+      Master in fundamental computer science (complex systems speciality).
+  - when: 2014-2016
+    what: Classes préparatoires, lycée Henri-Wallon (Valenciennes)
+    detail: >-
+      Preparation to competitive entrance exams. 
+
+# Software page.
+software:
+  jaxopt: >-
+    I am a top-3 contributor to JAXopt, a library for hardware-accelerated,
+    differentiable optimization in JAX. My contributions include an Armijo line
+    search, Anderson acceleration, an OSQP solver for quadratic programming, and
+    a substantial share of the tests and documentation.
+
+# Earlier projects (2015–2018), shown as history on the Software page.
+earlierProjects:
+  - title: CartomensIA
+    year: 2018
+    desc: "Card-game engine with an online server and an MCTS bot, written in C++/SFML. Led a team of 17 (2017–2018)."
+    url: https://graal.ens-lyon.fr/cartomensia/
+  - title: MiniSQL
+    year: 2018
+    desc: A small SQL interpreter and compiler in C++ using Boost.Spirit.
+    url: https://github.com/Algue-Rythme/MiniSQL
+  - title: CGDI inpainting
+    year: 2018
+    desc: Image inpainting in C++.
+    url: https://github.com/Algue-Rythme/CGDI-inpainting
+  - title: Caml-light interpreter
+    year: 2017
+    desc: An interpreter for a subset of Caml-light, written in OCaml.
+    url: https://github.com/jetSett/Projet2-fouine
+  - title: Raytracer
+    year: 2016
+    desc: A ray tracer written in C++.
+    url: https://github.com/jetSett/Raytracer
+  - title: Neural network from scratch
+    year: 2016
+    desc: A neural network implemented from scratch in C++ with Eigen.
+    url: https://github.com/Algue-Rythme/NeuralNetwork
+  - title: Procedural map generator
+    year: 2015
+    desc: A procedural map generator using Perlin noise and Voronoi diagrams in C++/CUDA.
+    url: https://github.com/Algue-Rythme/Map-Generator
+  - title: Hex with Monte Carlo tree search
+    year: 2014
+    desc: An AI for the game of Hex using Monte Carlo tree search, in C++/SFML.
+    url: https://github.com/Algue-Rythme/Hex-Game
+
+# Search-engine / social metadata.
+seo:
+  defaultTitle: "Louis Béthune · Machine Learning Research & Engineering"
+  defaultDescription: >-
+    I'm a research engineer working on generative models, learning
+    algorithms, large-scale training, and ML systems.

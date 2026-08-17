@@ -1,5 +1,16 @@
-_site
-.sass-cache
-.jekyll-cache
-.jekyll-metadata
-vendor
+node_modules/
+dist/
+.astro/
+.DS_Store
+*.log
+.vercel/
+.netlify/
+
+# Scratch / source inputs — not part of the built site
+# (figures are already extracted into src/assets/, CV is served from public/cv/)
+*.pdf
+!public/cv/*.pdf
+IMG_*.jpg
+publications.txt
+design-mockup.html
+louis_bethune_website_redesign_brief.md

@@ -1,0 +1,21 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import PubList from '../components/PubList.astro';
+
+const all = await getCollection('publications');
+---
+
+<Base
+  title="Publications"
+  current="publications"
+  path="/publications"
+  description="Publications by Louis Béthune across generative modeling, large-scale training, optimization, robustness and optimal transport."
+>
+  <section class="section container" style="border-top: none;">
+    <div class="section__header">
+      <p class="section__label eyebrow">Publications</p>
+    </div>
+    <PubList entries={all} />
+  </section>
+</Base>

@@ -1,0 +1,34 @@
+---
+import { getEntry, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+
+const servicePage = await getEntry('pages', 'community');
+const teachingPage = await getEntry('pages', 'teaching');
+const { Content: ServiceContent } = await render(servicePage!);
+const { Content: TeachingContent } = await render(teachingPage!);
+---
+
+<Base
+  title="Community"
+  current="community"
+  path="/community"
+  description="Community service and teaching by Louis Béthune: area-chair and reviewing roles, and university teaching."
+>
+  <section class="section container" style="border-top: none; padding-top: var(--space-xl);">
+    <div class="section__header">
+      <p class="section__label eyebrow">Service</p>
+    </div>
+    <div class="prose">
+      <ServiceContent />
+    </div>
+  </section>
+
+  <section class="section container">
+    <div class="section__header">
+      <p class="section__label eyebrow">Teaching</p>
+    </div>
+    <div class="prose">
+      <TeachingContent />
+    </div>
+  </section>
+</Base>

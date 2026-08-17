@@ -1,0 +1,58 @@
+---
+import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects
+    .filter((p) => p.data.hasDetail)
+    .map((project) => ({ params: { id: project.id }, props: { project } }));
+}
+
+const { project } = Astro.props;
+const { data } = project;
+const { Content } = await render(project);
+
+const linkOrder: Array<{ key: keyof typeof data.links; label: string }> = [
+  { key: 'paper', label: 'Paper' },
+  { key: 'code', label: 'Code' },
+  { key: 'weights', label: 'Weights' },
+  { key: 'project', label: 'Project' },
+  { key: 'talk', label: 'Talk' },
+];
+const links = linkOrder.filter((o) => data.links[o.key]);
+---
+
+<Base title={data.title} current="work" path={`/work/${project.id}`} description={data.summary}>
+  <article class="section container" style="border-top: none;">
+    <div class="section__header">
+      <p class="section__label eyebrow">{data.year}</p>
+      <h1 class="section__title">{data.title}</h1>
+    </div>
+    <p class="hero__lede" style="max-width: var(--width-prose);">{data.summary}</p>
+    {data.role && <p class="meta" style="margin-top: var(--space-xs);">{data.role}</p>}
+
+    {data.image && (
+      <figure class="work-card__media" style="aspect-ratio:auto; margin: var(--space-xl) 0;">
+        <Image src={data.image} alt={data.imageAlt ?? data.title} widths={[600, 1000, 1400]} sizes="(max-width: 900px) 100vw, 900px" />
+      </figure>
+    )}
+
+    <div class="prose" style="margin-top: var(--space-lg);">
+      <Content />
+    </div>
+
+    {links.length > 0 && (
+      <p class="link-list" style="margin-top: var(--space-lg);">
+        {links.map((lk) => (
+          <a class="btn-link" href={data.links[lk.key]} target="_blank" rel="noopener">{lk.label}</a>
+        ))}
+      </p>
+    )}
+
+    <p class="link-list" style="margin-top: var(--space-xl);">
+      <a class="btn-link btn-link--go" href="/work">All work</a>
+    </p>
+  </article>
+</Base>
