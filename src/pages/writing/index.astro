@@ -1,0 +1,44 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+const posts = (await getCollection('writing'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<Base
+  title="Writing"
+  current="writing"
+  path="/writing"
+  description="Notes and writing by Louis Béthune on generative modeling, large-scale training, and ML systems."
+>
+  <section class="section container" style="border-top: none;">
+    <div class="section__header">
+      <p class="section__label eyebrow">Writing</p>
+      <h1 class="section__title">Notes, in progress.</h1>
+    </div>
+    <p class="prose">
+      Occasional notes on things I'm building or thinking through, kept short and technical.
+    </p>
+  </section>
+
+  <section class="section container">
+    {posts.length === 0 ? (
+      <p class="prose">Nothing published yet. Soon.</p>
+    ) : (
+      <ol class="pub-list">
+        {posts.map((p) => (
+          <li class="pub-item">
+            <p class="pub-item__year">{fmt(p.data.date)}</p>
+            <div class="pub-item__body">
+              <p class="pub-item__title"><a href={`/writing/${p.id}`}>{p.data.title}</a></p>
+              {p.data.description && <p class="pub-item__authors">{p.data.description}</p>}
+            </div>
+          </li>
+        ))}
+      </ol>
+    )}
+  </section>
+</Base>

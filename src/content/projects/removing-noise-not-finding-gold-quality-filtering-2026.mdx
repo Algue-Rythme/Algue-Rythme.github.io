@@ -1,0 +1,16 @@
+---
+title: "Removing Noise, not Finding Gold: Quality Filtering for Large-Scale Pretraining"
+year: 2026
+order: 3
+featured: true
+summary: "For large-scale pretraining data, the benefit of quality filtering comes mainly from removing low-quality samples rather than from surfacing exceptional ones."
+role: "Co-author"
+theme: ["systems"]
+image: ../../assets/figures/quality-filtering-pipeline.webp
+imageAlt: "Classifier-based quality filtering pipeline: embed, score, and keep the top-k of the pretraining set"
+links:
+  paper: "https://arxiv.org/abs/2510.00866"
+hasDetail: false
+---
+
+Quality filters are a standard part of pretraining pipelines, but what they actually buy is not obvious. Analyzed at scale, most of the gain comes from discarding the low-quality tail rather than from identifying rare high-value data, which has direct consequences for how filters should be built and tuned.

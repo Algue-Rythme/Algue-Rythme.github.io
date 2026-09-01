@@ -1,0 +1,42 @@
+---
+// Inline brand/UI icons for contact links. `name` selects the glyph.
+interface Props {
+  name: 'github' | 'scholar' | 'linkedin' | 'email' | 'twitter' | 'cv';
+  class?: string;
+}
+const { name, class: klass } = Astro.props;
+---
+
+{name === 'github' && (
+  <svg class:list={['social-icon', klass]} viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+    <path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.4-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5Z" />
+  </svg>
+)}
+{name === 'scholar' && (
+  <svg class:list={['social-icon', klass]} viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+    <path d="M12 2 1 8.5l11 6.5 9-5.3v6.8h2V8.5L12 2Z" />
+    <path d="M5.5 13.2v3.6C5.5 19.1 8.4 21 12 21s6.5-1.9 6.5-4.2v-3.6L12 17.2l-6.5-4Z" />
+  </svg>
+)}
+{name === 'linkedin' && (
+  <svg class:list={['social-icon', klass]} viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+    <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM7.12 20.45H3.55V9h3.57v11.45ZM22.22 0H1.77C.8 0 0 .78 0 1.75v20.5C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.75V1.75C24 .78 23.2 0 22.22 0Z" />
+  </svg>
+)}
+{name === 'email' && (
+  <svg class:list={['social-icon', klass]} viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2.5" y="4.5" width="19" height="15" rx="2" />
+    <path d="m3 6 9 6.5L21 6" />
+  </svg>
+)}
+{name === 'cv' && (
+  <svg class:list={['social-icon', klass]} viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
+    <path d="M14 3v5h5M9 13h6M9 17h6" />
+  </svg>
+)}
+{name === 'twitter' && (
+  <svg class:list={['social-icon', klass]} viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+    <path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.22-6.82-5.97 6.82H1.65l7.73-8.83L1.23 2.25h6.83l4.71 6.23 5.47-6.23Zm-1.16 17.52h1.83L7.01 4.13H5.05l12.03 15.64Z" />
+  </svg>
+)}

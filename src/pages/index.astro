@@ -1,0 +1,53 @@
+---
+import { getEntry, render } from 'astro:content';
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import site from '../data/site';
+import profile from '../assets/profile.webp';
+
+const { identity } = site;
+
+const homePage = await getEntry('pages', 'home');
+const hiringPage = await getEntry('pages', 'hiring');
+const newsPage = await getEntry('pages', 'news');
+const { Content: HomeContent } = await render(homePage!);
+const { Content: HiringContent } = await render(hiringPage!);
+const { Content: NewsContent } = await render(newsPage!);
+const hasNews = (newsPage?.body ?? '').trim().length > 0;
+---
+
+<Base current="home" jsonLdPerson>
+  <!-- Warm welcome -->
+  <header class="hero container">
+    <div class="hero__grid">
+      <div class="hero__main">
+        <div class="accent-rule"></div>
+        <h1 class="visually-hidden">Louis Béthune</h1>
+        <p class="hero__role">{identity.role}</p>
+        <div class="hero__welcome">
+          <HomeContent />
+        </div>
+      </div>
+      <figure class="hero__photo">
+        <Image src={profile} alt="Portrait of Louis Béthune" widths={[240, 480]} sizes="(max-width: 720px) 55vw, 240px" />
+      </figure>
+    </div>
+    <div class="prose hero__contact">
+      <HiringContent />
+    </div>
+  </header>
+
+  <!-- News -->
+  <section class="section container">
+    <div class="section__header">
+      <p class="section__label eyebrow">News</p>
+    </div>
+    {hasNews ? (
+      <div class="news">
+        <NewsContent />
+      </div>
+    ) : (
+      <p class="meta">Nothing to report yet.</p>
+    )}
+  </section>
+</Base>

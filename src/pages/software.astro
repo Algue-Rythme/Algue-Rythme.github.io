@@ -1,0 +1,46 @@
+---
+import Base from '../layouts/Base.astro';
+import site from '../data/site';
+const { software, earlierProjects } = site;
+---
+
+<Base
+  title="Software"
+  current="software"
+  path="/software"
+  description="Open-source and software work by Louis Béthune: JAXopt, research code, and earlier systems projects."
+>
+  <section class="section container" style="border-top: none; padding-top: var(--space-xl);">
+    <div class="section__header">
+      <p class="section__label eyebrow">Research code</p>
+    </div>
+    <h3 class="work-entry__title" style="margin-bottom: var(--space-xs);">JAXopt</h3>
+    <p class="prose">{software.jaxopt}</p>
+    <p class="link-list" style="margin-top: var(--space-sm);">
+      <a class="btn-link" href="https://github.com/google/jaxopt" target="_blank" rel="noopener">Repository</a>
+    </p>
+  </section>
+
+  <section class="section container">
+    <div class="section__header">
+      <p class="section__label eyebrow">Earlier projects · 2015–2018</p>
+    </div>
+    <p class="prose" style="margin-bottom: var(--space-lg);">
+      Systems and graphics projects from my studies. They are here as history, evidence of building
+      things across the stack for a long time.
+    </p>
+    <ol class="pub-list">
+      {earlierProjects.map((proj) => (
+        <li class="pub-item">
+          <p class="pub-item__year">{proj.year}</p>
+          <div class="pub-item__body">
+            <p class="pub-item__title">
+              {proj.url ? <a href={proj.url} target="_blank" rel="noopener">{proj.title}</a> : proj.title}
+            </p>
+            <p class="pub-item__authors">{proj.desc}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
+</Base>

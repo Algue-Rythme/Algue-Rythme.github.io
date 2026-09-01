@@ -1,0 +1,44 @@
+---
+// Renders a mailto: link without exposing the address to email harvesters —
+// in the HTML output *or* in this repo's source.
+//
+// `enc` is the base64 of the comma-joined address list (see src/data/site.yaml
+// for how to produce it). It is passed straight through to a data-* attribute,
+// so no plaintext address appears in the built HTML or in the source files that
+// use this component. A tiny client script restores the real `mailto:` href
+// (and the visible text, when the text *is* the address) at runtime; a no-JS
+// HTML-entity fallback keeps the address readable and copyable.
+//
+// This is friction, not a wall: base64 is reversible, so a JS-executing or
+// base64-decoding crawler can still read it. It defeats the common regex/
+// static-HTML harvesters, which is the realistic threat.
+interface Props {
+  enc: string; // base64 of the comma-joined mailto address list
+  class?: string;
+}
+const { enc, class: klass } = Astro.props;
+const hasSlot = Astro.slots.has('default');
+
+// Decode happens at build time only (in Node) — the plaintext is never written
+// to the source or, except as an entity-encoded no-JS fallback, to the output.
+const first = Buffer.from(enc, 'base64').toString('utf8').split(',')[0];
+const b64 = (s: string) => Buffer.from(s, 'utf8').toString('base64');
+const entities = (s: string) => [...s].map((c) => `&#${c.codePointAt(0)};`).join('');
+
+const dataText = hasSlot ? undefined : b64(first);
+const fallback = hasSlot ? null : entities(first);
+---
+
+{hasSlot ? (
+  <a class:list={['js-email', klass]} href="#" data-email={enc}><slot /></a>
+) : (
+  <a class:list={['js-email', klass]} href="#" data-email={enc} data-email-text={dataText} set:html={fallback} />
+)}
+
+<script>
+  const decode = (v: string | undefined) => (v ? atob(v) : '');
+  document.querySelectorAll<HTMLAnchorElement>('a.js-email[data-email]').forEach((a) => {
+    a.href = 'mailto:' + decode(a.dataset.email);
+    if (a.dataset.emailText) a.textContent = decode(a.dataset.emailText);
+  });
+</script>
