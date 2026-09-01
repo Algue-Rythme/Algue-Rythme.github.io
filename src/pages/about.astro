@@ -1,0 +1,102 @@
+---
+import Base from '../layouts/Base.astro';
+import { Image } from 'astro:assets';
+import { getEntry, render } from 'astro:content';
+import site from '../data/site';
+import profile from '../assets/profile.webp';
+import SocialIcon from '../components/SocialIcon.astro';
+import EmailLink from '../components/EmailLink.astro';
+
+const { identity, timeline } = site;
+const aboutPage = await getEntry('pages', 'about');
+const { Content } = await render(aboutPage!);
+---
+
+<Base
+  title="About"
+  current="about"
+  path="/about"
+  jsonLdPerson
+  description="About Louis Béthune, Research Engineer at Apple Machine Learning Research in Paris."
+>
+  <section class="section container" style="border-top: none;">
+    <div class="about-head">
+      <div class="about-head__text">
+        <div class="section__header">
+          <p class="section__label eyebrow">About me</p>
+          <h1 class="section__title">Louis Béthune</h1>
+        </div>
+        <div class="prose">
+          <Content />
+        </div>
+      </div>
+      <figure class="about-head__photo">
+        <Image src={profile} alt="Portrait of Louis Béthune" widths={[320, 640]} sizes="(max-width: 720px) 40vw, 260px" />
+      </figure>
+    </div>
+    <p class="link-list contact-links" style="margin-top: var(--space-lg);">
+      <EmailLink enc={identity.emailEnc}><SocialIcon name="email" />Email</EmailLink>
+      <a href={identity.links.github} target="_blank" rel="me noopener"><SocialIcon name="github" />GitHub</a>
+      <a href={identity.links.scholar} target="_blank" rel="noopener"><SocialIcon name="scholar" />Google Scholar</a>
+      <a href={identity.links.linkedin} target="_blank" rel="me noopener"><SocialIcon name="linkedin" />LinkedIn</a>
+      <a href="/cv/Louis_Bethune_CV.pdf" target="_blank" rel="noopener"><SocialIcon name="cv" />CV</a>
+    </p>
+  </section>
+
+  <section class="section container">
+    <div class="section__header">
+      <p class="section__label eyebrow">Timeline</p>
+    </div>
+    <ol class="pub-list">
+      {timeline.map((t) => (
+        <li class="pub-item">
+          <p class="pub-item__year">{t.when}</p>
+          <div class="pub-item__body">
+            <p class="pub-item__title">{t.what}</p>
+            {t.detail && <p class="timeline-detail">{t.detail}</p>}
+            {t.links && t.links.length > 0 && (
+              <p class="pub-item__links">
+                {t.links.map((lk) => (
+                  <a class="btn-link" href={lk.href} target="_blank" rel="noopener">{lk.label}</a>
+                ))}
+              </p>
+            )}
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
+</Base>
+
+<style>
+  .about-head {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    align-items: start;
+  }  @media (min-width: 720px) {
+    .about-head {
+      grid-template-columns: 1fr 260px;
+      gap: var(--space-2xl);
+    }
+    .about-head__photo { order: 2; }
+  }
+  .about-head__photo {
+    margin: 0;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--color-surface-sunk);
+    max-width: 260px;
+  }
+  .about-head__photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .timeline-detail {
+    margin-top: var(--space-3xs);
+    color: var(--color-ink-soft);
+    font-size: var(--step-0);
+    line-height: var(--leading-normal);
+  }
+</style>

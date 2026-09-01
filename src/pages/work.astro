@@ -1,0 +1,67 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import WorkEntry from '../components/WorkEntry.astro';
+
+const projects = await getCollection('projects');
+const byId = Object.fromEntries(projects.map((p) => [p.id, p]));
+
+// Author list + venue for each project come from the publication record (by id).
+const pubs = await getCollection('publications');
+const pubById = Object.fromEntries(pubs.map((p) => [p.id, p.data]));
+const authorsFor = (id: string) => pubById[id]?.authors ?? [];
+const venueFor = (id: string) => pubById[id]?.venueShort ?? pubById[id]?.venue ?? (id === 'jaxopt' ? 'Open source' : undefined);
+
+const sections = [
+  {
+    label: 'Generative modeling & large-scale training',
+    intro:
+      'At Apple, my work centers on training foundation models and building the infrastructure around them: select and filter data, design training objectives, implement dataloaders, design tooling, integrate evaluation, baby-sit runs, conduct scaling studies.',
+    ids: [
+      'tri-modal-masked-diffusion-2026',
+      'scaling-laws-optimal-data-mixtures-2025',
+      'scaling-laws-forgetting-finetuning-2025',
+      'removing-noise-not-finding-gold-quality-filtering-2026',
+    ],
+  },
+  {
+    label: 'Learning algorithms, robustness & geometry',
+    intro:
+      'My earlier and ongoing theoretical work studies how a constraint on the model, in particular its Lipschitz constant, ties together robustness, privacy, optimal transport, and geometry. The same constraint that certifies robustness also gives differential privacy without clipping, well-behaved neural distance fields, and stable explanations.',
+    ids: [
+      'one-lipschitz-neural-distance-fields-2024',
+      'dp-sgd-without-clipping-2024',
+      'follow-the-energy-find-the-path-2025',
+      'robust-one-class-classification-sdf-2023',
+      'pay-attention-to-your-loss-2022',
+    ],
+  },
+];
+---
+
+<Base
+  title="Work"
+  current="work"
+  path="/work"
+  description="Selected work by Louis Béthune across generative modeling, large-scale training, learning algorithms, and open source."
+>
+  {sections.map((s, i) => (
+    <section
+      class="section container work-section"
+      style={i === 0 ? 'border-top: none; padding-top: var(--space-xl);' : undefined}
+    >
+      <div class="section__header">
+        <p class="section__label eyebrow">{s.label}</p>
+      </div>
+      <p class="prose work-section__intro">{s.intro}</p>
+      <div class="work-entries">
+        {s.ids
+          .filter((id) => byId[id])
+          .sort((a, b) => byId[b].data.year - byId[a].data.year)
+          .map((id) => (
+            <WorkEntry project={byId[id]} authors={authorsFor(id)} venue={venueFor(id)} />
+          ))}
+      </div>
+    </section>
+  ))}
+</Base>

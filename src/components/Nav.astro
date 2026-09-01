@@ -1,0 +1,40 @@
+---
+import site from '../data/site';
+
+interface Props {
+  current?: string;
+}
+const { current = 'home' } = Astro.props;
+
+const links = [
+  { href: '/', label: 'Home', key: 'home' },
+  { href: '/work', label: 'My work', key: 'work' },
+  { href: '/publications', label: 'Publications', key: 'publications' },
+  { href: '/software', label: 'Software', key: 'software' },
+  { href: '/community', label: 'Community', key: 'community' },
+  { href: '/about', label: 'About me', key: 'about' },
+];
+---
+
+<nav class="site-nav" aria-label="Primary">
+  <div class="site-nav__inner container">
+    <a class="site-nav__brand" href="/" aria-current={current === 'home' ? 'page' : undefined}>
+      Louis Béthune
+    </a>
+    <ul class="site-nav__links">
+      {links.map((l) => (
+        <li>
+          <a
+            class:list={['site-nav__link', { 'is-current': current === l.key }]}
+            href={l.href}
+            target={l.external ? '_blank' : undefined}
+            rel={l.external ? 'noopener' : undefined}
+            aria-current={current === l.key ? 'page' : undefined}
+          >
+            {l.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>

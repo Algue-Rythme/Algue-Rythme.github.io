@@ -1,0 +1,46 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+  featured?: boolean;
+  venue?: string;
+}
+const { project, featured = false, venue } = Astro.props;
+const { data } = project;
+
+const linkOrder: Array<[keyof typeof data.links, string]> = [
+  ['paper', 'Paper'],
+  ['code', 'Code'],
+  ['weights', 'Weights'],
+  ['project', 'Project'],
+  ['talk', 'Talk'],
+];
+const links = linkOrder.filter(([k]) => data.links[k]);
+const detailHref = data.hasDetail ? `/work/${project.id}` : undefined;
+const yr = String(data.year);
+const meta = venue ? (venue.includes(yr) ? venue : `${venue} · ${yr}`) : yr;
+---
+
+<article class:list={['work-card', { 'work-card--featured': featured }]}>
+  {data.image && (
+    <div class="work-card__media">
+      <Image src={data.image} alt={data.imageAlt ?? data.title} widths={[400, 800, 1200]} sizes="(max-width: 720px) 100vw, 560px" />
+    </div>
+  )}
+  <div class="work-card__body">
+    <p class="work-card__year">{meta}</p>
+    <h3 class="work-card__title">
+      {detailHref ? <a href={detailHref}>{data.title}</a> : data.title}
+    </h3>
+    <p class="work-card__summary">{data.summary}</p>
+    {links.length > 0 && (
+      <p class="work-card__links">
+        {links.map(([k, label]) => (
+          <a class="btn-link" href={data.links[k]} target="_blank" rel="noopener">{label}</a>
+        ))}
+      </p>
+    )}
+  </div>
+</article>

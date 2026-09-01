@@ -1,0 +1,118 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entries: CollectionEntry<'publications'>[];
+}
+const { entries } = Astro.props;
+
+const isSelf = (a: string) => /b[eé]thune/i.test(a) && /^(louis|l\b|l\.)/i.test(a.trim());
+
+type Entry = CollectionEntry<'publications'>;
+
+// Approximate within-year month of each venue, so a year reads in true
+// chronological order: ICLR (spring) -> ICML (summer) -> NeurIPS (winter),
+// with preprints treated as the most recent thing in their year.
+const VENUE_MONTH: Array<[RegExp, number]> = [
+  [/ICLR/i, 4],
+  [/AISTATS/i, 5],
+  [/CVPR/i, 6],
+  [/SGP|Geometry Processing/i, 7],
+  [/ICML/i, 7],
+  [/ICCV/i, 10],
+  [/SEC|Edge Computing/i, 11],
+  [/NeurIPS|Neural Information/i, 12],
+];
+const monthKey = (e: Entry): number => {
+  if (typeof e.data.month === 'number') return e.data.month; // explicit sort month
+  if (e.data.type === 'preprint') return 13; // preprints = most recent in the year
+  const v = `${e.data.venueShort ?? ''} ${e.data.venue ?? ''}`;
+  for (const [re, m] of VENUE_MONTH) if (re.test(v)) return m;
+  return 6; // journals / other: mid-year default
+};
+
+// Reverse-chronological by year; within a year, ascending by publication date.
+const sorted = [...entries].sort(
+  (a, b) => b.data.year - a.data.year || monthKey(a) - monthKey(b),
+);
+
+const linkOrder: Array<{ key: keyof Entry['data']['links']; label: string }> = [
+  { key: 'paper', label: 'Paper' },
+  { key: 'arxiv', label: 'arXiv' },
+  { key: 'code', label: 'Code' },
+  { key: 'project', label: 'Project' },
+];
+
+// Precompute a plain view model so the template stays free of type casts.
+const items = sorted.map((e) => {
+  const l = e.data.links;
+  const href = l.paper ?? l.arxiv ?? l.project;
+  const links = linkOrder
+    .filter((o) => l[o.key])
+    // Don't show arXiv when a proceedings "paper" link already exists (redundant).
+    .filter((o) => !(o.key === 'arxiv' && l.paper))
+    .map((o) => ({ label: o.label, url: l[o.key] as string }));
+  const authors = e.data.authors.map((name, i) => ({
+    name,
+    self: isSelf(name),
+    sep: i < e.data.authors.length - 1,
+  }));
+  return {
+    id: e.id,
+    title: e.data.title,
+    year: e.data.year,
+    venue: e.data.venueShort ?? e.data.venue,
+    award: e.data.award,
+    href,
+    links,
+    authors,
+  };
+});
+
+// Group into year blocks (year shown once per block).
+const groups: { year: number; items: typeof items }[] = [];
+for (const it of items) {
+  const last = groups[groups.length - 1];
+  if (last && last.year === it.year) last.items.push(it);
+  else groups.push({ year: it.year, items: [it] });
+}
+---
+
+<div class="pub-groups">
+  {groups.map((g) => (
+    <section class="pub-group">
+      <p class="pub-group__year">{g.year}</p>
+      <ol class="pub-list">
+        {g.items.map((e) => (
+          <li class="pub-item">
+            <p class="pub-item__title">
+              {e.href ? <a href={e.href} target="_blank" rel="noopener">{e.title}</a> : e.title}
+            </p>
+            <p class="pub-item__authors">
+              {e.authors.map((a) => (
+                <>
+                  <span class:list={{ 'pub-author--self': a.self }}>{a.name}</span>{a.sep ? ', ' : ''}
+                </>
+              ))}
+            </p>
+            <p class="pub-item__meta">
+              <span class="pub-item__venue">{e.venue}</span>
+              {e.award && (
+                <>
+                  <span class="pub-sep" aria-hidden="true">·</span>
+                  <span class="pub-item__award">{e.award}</span>
+                </>
+              )}
+              {e.links.map((lk) => (
+                <>
+                  <span class="pub-sep" aria-hidden="true">·</span>
+                  <a class="btn-link" href={lk.url} target="_blank" rel="noopener">{lk.label}</a>
+                </>
+              ))}
+            </p>
+          </li>
+        ))}
+      </ol>
+    </section>
+  ))}
+</div>

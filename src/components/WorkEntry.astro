@@ -1,0 +1,51 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { render } from 'astro:content';
+import { Image } from 'astro:assets';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+  authors?: string[];
+  venue?: string;
+}
+const { project, authors = [], venue } = Astro.props;
+const { data } = project;
+const { Content } = await render(project);
+
+const linkOrder: Array<{ key: keyof typeof data.links; label: string }> = [
+  { key: 'paper', label: 'Paper' },
+  { key: 'code', label: 'Code' },
+  { key: 'weights', label: 'Weights' },
+  { key: 'project', label: 'Project' },
+  { key: 'talk', label: 'Talk' },
+];
+const links = linkOrder.filter((o) => data.links[o.key]);
+const yr = String(data.year);
+const meta = venue ? (venue.includes(yr) ? venue : `${venue} · ${yr}`) : yr;
+const authorLine = authors.join(', ');
+---
+
+<article class="work-entry">
+  <div class="work-entry__head">
+    <p class="work-entry__meta meta">{meta}</p>
+    <h3 class="work-entry__title">{data.title}</h3>
+    {data.image && (
+      <figure class="work-entry__media">
+        <Image src={data.image} alt={data.imageAlt ?? data.title} widths={[300, 600, 900]} sizes="300px" />
+      </figure>
+    )}
+  </div>
+  <div class="work-entry__main">
+    {authorLine && <p class="work-entry__authors">{authorLine}</p>}
+    <div class="work-entry__body prose">
+      <Content />
+    </div>
+    {links.length > 0 && (
+      <p class="work-entry__links link-list">
+        {links.map((lk) => (
+          <a class="btn-link" href={data.links[lk.key]} target="_blank" rel="noopener">{lk.label}</a>
+        ))}
+      </p>
+    )}
+  </div>
+</article>

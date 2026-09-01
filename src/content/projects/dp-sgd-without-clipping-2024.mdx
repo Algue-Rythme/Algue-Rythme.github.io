@@ -1,0 +1,17 @@
+---
+title: "DP-SGD Without Clipping: The Lipschitz Neural Network Way"
+year: 2024
+order: 6
+featured: true
+summary: "Lipschitz-constrained networks bound per-sample gradient sensitivity by design, which enables differentially private training without the per-example gradient clipping that DP-SGD normally requires."
+role: "First author"
+theme: ["learning"]
+image: ../../assets/figures/privacylipschitz.webp
+imageAlt: "Private training with bounded-sensitivity Lipschitz layers"
+links:
+  paper: "https://arxiv.org/abs/2305.16202"
+  arxiv: "https://arxiv.org/abs/2305.16202"
+hasDetail: false
+---
+
+DP-SGD achieves differential privacy by clipping per-example gradients, which is expensive and hard to tune. Constraining the network to be Lipschitz gives an analytic bound on gradient sensitivity, so privacy guarantees follow without clipping, making private training simpler and more scalable.

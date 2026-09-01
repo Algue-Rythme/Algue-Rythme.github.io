@@ -1,0 +1,50 @@
+---
+// Renders a mailto: link that stays obfuscated in the HTML source *and* until a
+// real human interacts with the page.
+//
+// `enc` is the address list (comma-joined) XOR'd with a key and then base64'd —
+// see the note in src/data/site.yaml for how to produce it. Because it's XOR'd,
+// a scraper that blindly base64-decodes blobs gets garbage, not an address.
+//
+// The real `mailto:` href is assembled only on the first genuine user
+// interaction (pointer / key / touch / focus), never on load. So:
+//   - regex / static-HTML harvesters see only an opaque blob and href="#";
+//   - a headless crawler that just renders the DOM and reads hrefs still sees
+//     href="#" (it never interacts);
+//   - a human moves/clicks/tabs, the link materializes, and it works normally.
+//
+// There is deliberately no no-JS fallback: with JavaScript off the link is inert
+// and no address is present anywhere. The <slot> must carry a human label (never
+// the address itself).
+interface Props {
+  enc: string; // XOR+base64 of the comma-joined mailto address list
+  class?: string;
+}
+const { enc, class: klass } = Astro.props;
+---
+
+<a class:list={['js-email', klass]} href="#" data-email={enc}><slot /></a>
+
+<script>
+  const KEY = 'Rk9p2Xz7Qw';
+  const decode = (b64: string) => {
+    const bin = atob(b64);
+    let out = '';
+    for (let i = 0; i < bin.length; i++) {
+      out += String.fromCharCode(bin.charCodeAt(i) ^ KEY.charCodeAt(i % KEY.length));
+    }
+    return out;
+  };
+  let revealed = false;
+  const reveal = () => {
+    if (revealed) return;
+    revealed = true;
+    document.querySelectorAll<HTMLAnchorElement>('a.js-email[data-email]').forEach((a) => {
+      a.href = 'mailto:' + decode(a.dataset.email ?? '');
+    });
+  };
+  // Assemble the address only once a real person interacts with the page.
+  for (const ev of ['pointerdown', 'keydown', 'touchstart', 'focusin'] as const) {
+    window.addEventListener(ev, reveal, { once: true, passive: true });
+  }
+</script>

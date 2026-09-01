@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.astro/
+.DS_Store
+*.log
+.vercel/
+.netlify/
+
+# Local scratch / not published (kept out of the public repo)
+/old_website/
+/HANDOFF.md
+/design-mockup.html
+/louis_bethune_website_redesign_brief.md
+/publications.txt
+/IMG_0373.jpg
+/*.pdf
